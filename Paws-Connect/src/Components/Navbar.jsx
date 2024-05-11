@@ -1,4 +1,5 @@
 import React from "react";
+import { logo1, logo2, search } from "../assets";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -8,8 +9,8 @@ const Navbar = () => {
         <div className="box-logo">
           <div className="group-logo">
             <div className="icon-logo">
-              <img src="./src/assets/logo1.png" alt="logo1" className="logo1" />
-              <img src="./src/assets/logo2.png" alt="logo2" className="logo2" />
+              <img src={logo1} alt="logo1" className="logo1" />
+              <img src={logo2} alt="logo2" className="logo2" />
             </div>
             <Link to="/" className="logo">
               Paws Connect
@@ -20,14 +21,17 @@ const Navbar = () => {
           <Link to="/" className="nav-link">
             Beranda
           </Link>
-          <Link to="/" className="nav-link">
+          <Link to="/adopsi" className="nav-link">
             Adopsi
           </Link>
-          <Link to="/" className="nav-link">
+          <Link to="/artikel" className="nav-link">
             Artikel
           </Link>
-          <Link to="/" className="nav-link">
+          <Link to="/kontak" className="nav-link">
             Kontak
+          </Link>
+          <Link to="/komunitas" className="nav-link">
+            Komunitas
           </Link>
         </div>
         <div className="search-box">
