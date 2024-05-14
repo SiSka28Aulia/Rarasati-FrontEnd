@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import Beranda from "./Pages/Beranda";
 import Adopsi from "./Pages/Adopsi";
@@ -11,7 +11,7 @@ import Hero from "./Components/Hero";
 
 const App = () => {
   return (
-    <div>
+    <>
       <BrowserRouter>
         <Navbar />
         <div>
@@ -24,7 +24,7 @@ const App = () => {
           </Routes>
         </div>
       </BrowserRouter>
-    </div>
+    </>
   );
 };
 

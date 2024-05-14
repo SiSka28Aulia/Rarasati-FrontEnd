@@ -1,10 +1,11 @@
 import React from "react";
 import { logo1, logo2, search } from "../assets";
+import styles from "../style";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="border-b-2 shadow-md fixed w-full bg-white md:h-80px] ">
+    <>
       <div className="md:flex space-x-6 hidden items-center flex-col justify-center md:flex-row">
         <div className="flex justify-between items-center">
           <div className="flex">
@@ -76,24 +77,25 @@ const Navbar = () => {
         </div>
         <div className="flex p-4 ">
           <div className="relative ">
-            <div className=" w-[250px] h-[32px] border-2  rounded-[30px] border-[#A367B1]  text-[15px] font-light [font-family:'Satoshi',Helvetica] leading-[40px] mx-10">
+            <div
+              className={` ${styles.flexCenter}  w-[270px] h-[32px] border-2  rounded-[30px] border-[#A367B1]  text-[15px] font-light [font-family:'Satoshi',Helvetica] leading-[40px] mx-10`}
+            >
               <img
                 src={search}
                 alt="search"
-                className="w-[17px] h-[17px] relative top-1 right-70 left-1"
+                className="w-[17px] h-[17px] relative "
               />
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Cari"
-                  className="border-0 bg-transparent top-1  border rounded-md placeholder:text-[#A367B1] text-center w-[200px] h-[17px] text-sky-950 text-[15px] font-light [font-family:'Satoshi',Helvetica] leading-[40px]"
-                />
-              </div>
+
+              <input
+                type="text"
+                placeholder="Cari"
+                className="border-0 bg-transparent border rounded-md placeholder:text-[#A367B1] text-center w-[200px] h-[17px] text-sky-950 text-[15px] font-light [font-family:'Satoshi',Helvetica] leading-[40px]"
+              />
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
