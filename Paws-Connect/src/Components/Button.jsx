@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
-const Button = () => {
-  const [more, setMore] = useState("Selengkapnya");
-  const [adopt, setAdopt] = useState("Adopsi");
+const Button = (props) => {
+  // const [more, setMore] = useState("Selengkapnya");
+  // const [adopt, setAdopt] = useState("Adopsi");
   return (
     <>
-      <button className="w-[175px] h-[49px] items-center justify-center  relative bg-[#a367b1] rounded-[15px] font-weight-700 font-normal  [font-family:'Satoshi',Helvetica] text-[19px]  text-white text-[30px] tracking-[-0.69px] leading-7 whitespace-nowrap">
-        {more}
-      </button>
+      <div className="flex w-[188px] h-[62px] items-center justify-center gap-[10px] p-[10px] relative bg-[#a367b1] rounded-[15px]">
+        <button className="relative w-fit mt-[-2.50px] mb-[-0.50px] [font-weight:500] font-bold [font-size:30px] [font-family:'Satoshi',Helvetica]text-3xl font-bold  text-white text-[30px] tracking-[-0.69px] leading-[34px] whitespace-nowrap">
+          {props.button}
+        </button>
+      </div>
     </>
   );
 };

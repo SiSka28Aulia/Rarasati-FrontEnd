@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../style";
 import { catHome1, catHome2 } from "../assets";
-import Adopsi from "./Adopsi";
+import Button from "./Button";
 
 const Hero = () => {
   return (
@@ -22,7 +22,7 @@ const Hero = () => {
               Temukan Sahabat Sejati Anda Hari Ini di Website Adopsi Kucing Kami
             </p>
             <div className="mt-10">
-              <Adopsi />
+              <Button button="Adopsi" />
             </div>
           </div>
 

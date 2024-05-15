@@ -10,7 +10,7 @@ const Artikel = () => {
         <h1 className="text-[#274472] text-[40px] font-bold leading-[105px]">
           Artikel Terbaru Kami
         </h1>
-        <Button />
+        <Button button="Selengkapnya" />
       </div>
       <section className={`${styles.flexCenter} ${styles.paddingY}`}>
         <ArtikelItem />
