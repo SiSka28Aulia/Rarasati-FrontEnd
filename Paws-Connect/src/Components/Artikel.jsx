@@ -7,7 +7,7 @@ const Artikel = () => {
   return (
     <>
       <div className="flex items-center justify-between mx-32 mt-10 mb-10">
-        <h1 className="text-[#274472] text-[40px] font-bold leading-[105px]">
+        <h1 className="text-cyan text-3xl font-bold font-Satoshi-Regular ">
           Artikel Terbaru Kami
         </h1>
         <Button button="Selengkapnya" />

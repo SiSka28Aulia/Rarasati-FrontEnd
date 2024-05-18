@@ -7,17 +7,15 @@ const Hero = () => {
   return (
     <>
       <section className={`${styles.flexCenter}  `}>
-        <div className="flex items-center justify-between mx-32 mt-10 mb-10">
+        <div className="flex items-center justify-between mx-12 mt-10 mb-10">
           {/* <div className="flex flex-row items-center mb-8 mt-20 "> */}
           {/* Bagian Kiri */}
-          <div className="flex flex-1 flex-col items-start justify-center">
-            <div className="text-sky-950 text-[70px] font-bold font-['Satoshi'] [font-family:'Satoshi',Helvetica] leading-[105px]">
-              Dapatkan Anggota
+          <div className="flex flex-1 flex-col  justify-center p-">
+            <div className="text-secondary text-7xl font-bold font-Satoshi-Regular leading-[105px] ">
+              Dapatkan Anggota Keluarga Bulu Baru Anda Hari Ini
             </div>
-            <p className="pr-4 text-sky-950 text-[70px] font-bold font-['Satoshi'] [font-family:'Satoshi',Helvetica] leading-[105px]">
-              Keluarga Bulu Baru <br /> Anda Hari Ini
-            </p>
-            <p className="text-sky-950 text-xl font-light [font-family:'Satoshi',Helvetica] leading-[30px] mt-5">
+
+            <p className="text-secondary text-xl font-light font-Satoshi-Light leading-[30px] mt-5">
               Para Kucing yang Menunggu untuk Menjadi Bagian dari Rumah Anda!
               Temukan Sahabat Sejati Anda Hari Ini di Website Adopsi Kucing Kami
             </p>

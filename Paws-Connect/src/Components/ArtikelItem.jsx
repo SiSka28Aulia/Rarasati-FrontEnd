@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { logo1, artikel1 } from "../assets";
+import {
+  artikel1,
+  artikel2,
+  artikel3,
+  logoar1,
+  logoar2,
+  logoar3,
+} from "../assets";
 import styles from "../style";
 
 const ArtikelItem = () => {
@@ -11,59 +18,63 @@ const ArtikelItem = () => {
       image: artikel1,
       content:
         "Diantara cara mengatasi kejenuhan bekerja sendiri baik WFH maupun WFA diantaranya adalah dengan memelihara hewan. Menurut dr. Fadhli Rizal Makarim",
-      source: "Kompas.com",
-      sourcelogo: logo1,
+      source: "Kementrian Keuangan",
+      sourcelogo: logoar1,
     },
     {
       id: 2,
-      title: "Cara Memelihara Kucing",
-      read: "03 Menit untuk baca",
-      image: artikel1,
+      title: "Tips Merawat Kucing Yang Baik",
+      read: "07 Menit untuk baca",
+      image: artikel2,
       content:
         "Diantara cara mengatasi kejenuhan bekerja sendiri baik WFH maupun WFA diantaranya adalah dengan memelihara hewan. Menurut dr. Fadhli Rizal Makarim",
-      source: "Kompas.com",
-      sourcelogo: logo1,
+      source: "Kumparan",
+      sourcelogo: logoar2,
     },
     {
       id: 3,
-      title: "Cara Memelihara Kucing",
-      read: "03 Menit untuk baca",
-      image: artikel1,
+      title: "Kucing Tidak Suka Dry Food?",
+      read: "04 Menit untuk baca",
+      image: artikel3,
       content:
-        "Diantara cara mengatasi kejenuhan bekerja sendiri WFH maupun WFA diantaranya adalah dengan memelihara hewan. Menurut dr. Fadhli Rizal Makarim",
-      source: "Kompas.com",
-      sourcelogo: logo1,
+        "Kucing umumnya menyukai dua jenis makanan tersebut, namun kadang ada kucing yang tidak suka dry food dan lebih menyukai wet food.",
+      source: "Klik Dokter",
+      sourcelogo: logoar3,
     },
   ]);
+
   return (
-    <>
-      <div
-        className={` flex-row  ${styles.padding} ${styles.flexCenter} mt-0 space-x-10`}
-      >
-        {artikelitems.map((item) => (
-          <div className={`  w-[366px] h-[277px]`}>
-            <img src={item.image} alt={item.title} />
-            <div
-              className={`${styles.paragraph}text-sky-950  font-bold font-family:'Satoshi',Helvetica] leading-[45px]`}
-            >
-              {item.read}
-            </div>
-            <h3
-              className={`${styles.boxWidth} w-[84px] text-sky-950  font-light font-family:'Satoshi',Helvetica] leading-[45px]`}
-            >
-              {item.title}
-            </h3>
-            <p className={`${styles.paragraph}`}>{item.content}</p>
-            <div
-              className={`${styles.boxWidth} flex  items-start text-sky-950  font-light font-family:'Satoshi',Helvetica] leading-[45px]`}
-            >
-              <img src={item.sourcelogo} alt={item.title} />
+    <div
+      className={`grid grid-cols-1 md:grid-cols-3 gap-10 ${styles.padding} ${styles.flexCenter}`}
+    >
+      {artikelitems.map((item) => (
+        <div
+          key={item.id}
+          className="flex flex-col items-center p-5  border-gray-200 rounded-lg shadow-md bg-white"
+        >
+          <img
+            className="w-full h-64 object-cover mb-4"
+            src={item.image}
+            alt={item.title}
+          />
+          <h3 className="text-sm text-gray-500 font-light">{item.read}</h3>
+          <h3 className="text-lg text-gray-800 font-bold mt-2">{item.title}</h3>
+          <p className="text-sm text-gray-700 font-light mt-2">
+            {item.content}
+          </p>
+          <div className="flex items-center mt-4">
+            <img
+              className="w-6 h-6 mr-2"
+              src={item.sourcelogo}
+              alt={item.source}
+            />
+            <span className="text-sm text-gray-600 font-bold">
               {item.source}
-            </div>
+            </span>
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 };
 

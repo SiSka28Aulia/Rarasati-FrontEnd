@@ -27,12 +27,12 @@ const PuppiesItem = () => {
     <>
       <div className="flex flex-row mt-10 items-center space-x-10">
         {puppiesitems.map((item) => (
-          <div className="w-fit border-b-2 border-[#D9D9D9] bg-[#F8F8F8] shadow-inner rounded-[15px]  ">
+          <div className="w-fit border-b-2 border-greyLight bg-greyLighter  shadow-inner rounded-[15px]  ">
             <img src={item.image} alt={item.title} />
-            <div className="w-[84px] text-sky-950 text-3xl font-bold font-family:'Satoshi',Helvetica] leading-[45px]">
+            <div className="w-[84px]  text-secondary  text-3xl font-bold  font-Satoshi-Regular leading-[45px] pl-5">
               {item.title}
             </div>
-            <div className="w-[315px] text-[#0C2D48] text-xl font-light font-['Satoshi'] [font-family:'Satoshi',Helvetica] leading-[30px] ">
+            <div className="w-[315px] text-secondary text-xl font-light font-Satoshi-Light leading-[30px] ">
               {item.desc}
             </div>
           </div>

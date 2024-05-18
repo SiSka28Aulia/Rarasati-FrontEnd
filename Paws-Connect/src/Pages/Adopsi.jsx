@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../style";
+import { Link } from "react-router-dom";
 import AdopsiItem from "../Components/AdopsiItem";
 import {
   channie,
@@ -17,15 +18,22 @@ import NavHeader from "../Components/NavHeader";
 const Adopsi = () => {
   return (
     <>
-      <NavHeader nav="Profil Kucing" />
+      <NavHeader
+        nav="Profil Kucing"
+        page="Beranda"
+        pagenav1=">"
+        page2="Adopsi"
+      />
       <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
         <div className="grid grid-cols-3 gap-16 p-4">
           <div>
-            <AdopsiItem
-              image={channie}
-              name="Channie"
-              desc="Gen : Betina  *   Usia : 8 Bulan"
-            />
+            <Link to="/adopsi-detail">
+              <AdopsiItem
+                image={channie}
+                name="Channie"
+                desc="Gen : Betina  *   Usia : 8 Bulan"
+              />
+            </Link>
           </div>
           <div>
             <AdopsiItem

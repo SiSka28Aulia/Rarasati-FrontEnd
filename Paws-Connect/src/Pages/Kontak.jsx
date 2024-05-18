@@ -1,7 +1,12 @@
 import React from "react";
+import NavHeader from "../Components/NavHeader";
 
 const Kontak = () => {
-  return <div>this is kontak</div>;
+  return (
+    <>
+      <NavHeader nav="Kontak" page="Beranda" pagenav1=">" page2="Kontak" />
+    </>
+  );
 };
 
 export default Kontak;
