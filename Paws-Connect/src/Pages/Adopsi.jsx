@@ -1,96 +1,39 @@
 import React from "react";
 import styles from "../style";
 import { Link } from "react-router-dom";
-import AdopsiItem from "../Components/AdopsiItem";
-import {
-  channie,
-  channie2,
-  channie3,
-  channie4,
-  channie5,
-  channie6,
-  channie7,
-  channie8,
-  channie9,
-} from "../assets";
 import NavHeader from "../Components/NavHeader";
+import { puppiesItems } from "../constants";
 
 const Adopsi = () => {
   return (
     <>
       <NavHeader
-        nav="Profil Kucing"
+        nav="Adopsi"
         page="Beranda"
         pagenav1=">"
         page2="Adopsi"
+        pagenav2=">"
+        page3="Adopsi"
       />
       <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
-        <div className="grid grid-cols-3 gap-16 p-4">
-          <div>
-            <Link to="/adopsi-detail">
-              <AdopsiItem
-                image={channie}
-                name="Channie"
-                desc="Gen : Betina  *   Usia : 8 Bulan"
+        <div className="grid grid-cols-3 gap-8 p-4">
+          {puppiesItems.map((item) => (
+            <div key={item.title} className="relative w-fit overflow-hidden ">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-86 object-cover hover:cursor-pointer hover:scale-105 duration-300"
               />
-            </Link>
-          </div>
-          <div>
-            <AdopsiItem
-              image={channie2}
-              name="Channie"
-              desc="Gen : Betina  *   Usia : 8 Bulan"
-            />
-          </div>
-          <div>
-            <AdopsiItem
-              image={channie3}
-              name="Channie"
-              desc="Gen : Betina  *   Usia : 8 Bulan"
-            />
-          </div>
-          <div>
-            <AdopsiItem
-              image={channie4}
-              name="Channie"
-              desc="Gen : Betina  *   Usia : 8 Bulan"
-            />
-          </div>
-          <div>
-            <AdopsiItem
-              image={channie5}
-              name="Channie"
-              desc="Gen : Betina  *   Usia : 8 Bulan"
-            />
-          </div>
-          <div>
-            <AdopsiItem
-              image={channie6}
-              name="Channie"
-              desc="Gen : Betina  *   Usia : 8 Bulan"
-            />
-          </div>
-          <div>
-            <AdopsiItem
-              image={channie7}
-              name="Channie"
-              desc="Gen : Betina  *   Usia : 8 Bulan"
-            />
-          </div>
-          <div>
-            <AdopsiItem
-              image={channie8}
-              name="Channie"
-              desc="Gen : Betina  *   Usia : 8 Bulan"
-            />
-          </div>
-          <div>
-            <AdopsiItem
-              image={channie9}
-              name="Channie"
-              desc="Gen : Betina  *   Usia : 8 Bulan"
-            />
-          </div>
+              <div className="p-4 w-full">
+                <h2 className="text-secondary text-3xl font-bold font-Satoshi-Regular pt-2 leading-[37.50px]">
+                  {item.title}
+                </h2>
+                <p className="text-secondary text-xl font-light font-Satoshi-Light leading-[30px]">
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </>

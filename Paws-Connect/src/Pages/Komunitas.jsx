@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { arrow } from "../assets";
+import { send } from "../assets";
 import NavHeader from "../Components/NavHeader";
 import Comment from "../Components/Comment";
 
@@ -115,7 +115,7 @@ const Komunitas = () => {
               // onClick={handleAddComment}
               className="flex items-center justify-center px-4 w-24 h-24 bg-violet rounded-lg shadow  text-white font-bold font-Inter"
             >
-              <img src={arrow} alt="post" />
+              <img src={send} alt="post" />
             </button>
           </div>
         </div>

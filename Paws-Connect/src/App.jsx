@@ -8,7 +8,6 @@ import AdopsiDetail from "./Pages/AdopsiDetail";
 import Artikel from "./Pages/Artikel";
 import Kontak from "./Pages/Kontak";
 import Komunitas from "./Pages/Komunitas";
-import Hero from "./Components/Hero";
 
 const App = () => {
   return (
@@ -26,6 +25,8 @@ const App = () => {
           </Routes>
         </div>
       </BrowserRouter>
+
+      <Footer />
     </>
   );
 };

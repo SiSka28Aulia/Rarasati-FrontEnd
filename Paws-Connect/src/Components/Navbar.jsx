@@ -11,20 +11,23 @@ const Navbar = () => {
           <div className="flex">
             <Link to="/">
               <img
-                src={logo1}
+                src={logo2}
                 alt="logo"
-                className="w-[100%]  relative left-12 top-16.5 origin-top-left "
+                className="w-[100%]  relative left-16 top-16.5 origin-top-left "
               />
             </Link>
             <Link to="/">
               <img
-                src={logo2}
+                src={logo1}
                 alt="logo"
-                className="w-[100%]  relative left-12 top-16.5 origin-top-left "
+                className="w-[100%]  relative left-12 -top-2 origin-top-left "
               />
             </Link>
             <Link to="/">
-              <div className="w-96 h-24 text-primary text-2xl  font-bold font-weight-700 italic font-Inter leading-[40px] relative left-5 top-7">
+              <div
+                className="w-96 h-24 text-primary text-2xl  font-bold font-weight-700 italic font-Inter leading-[40px] md:flex space-x-6  items-start flex-col
+          justify-center"
+              >
                 Paw Connect
               </div>
             </Link>

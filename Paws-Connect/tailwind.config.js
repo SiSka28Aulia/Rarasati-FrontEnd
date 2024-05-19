@@ -64,6 +64,8 @@ export default {
       white: "#ffffff",
       cyan: "#274472",
       violet: "#6664D6",
+      purple: "#AFA4C8",
+      pink: "#D7B3D7",
     },
   },
   plugins: [],

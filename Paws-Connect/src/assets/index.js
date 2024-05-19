@@ -21,7 +21,9 @@ import channie6 from "./channie6.png";
 import channie7 from "./channie7.png";
 import channie8 from "./channie8.png";
 import channie9 from "./channie9.png";
-import arrow from "./arrow.svg";
+import send from "./send.svg";
+import arrow from "./arrow.png";
+import ellipse from "./ellipse.png";
 
 export {
   logo1,
@@ -47,5 +49,7 @@ export {
   channie7,
   channie8,
   channie9,
+  send,
   arrow,
+  ellipse,
 };
