@@ -1,9 +1,19 @@
 import React from "react";
-import styles from "../style";
+import { useParams } from "react-router-dom";
 import NavHeader from "../Components/NavHeader";
-import { channie, channie2, channie3, channie4, channie5 } from "../assets";
+import { puppiesItems, shareItems, catDetailItems } from "../constants";
+import DetailKucing from "../Components/DetailKucing";
 
 const AdopsiDetail = () => {
+  const { id } = useParams();
+  const cat = puppiesItems.find((item) => item.id === parseInt(id));
+
+  if (!cat) {
+    return <div>Cat not found</div>;
+  }
+
+  const details = catDetailItems[id];
+
   return (
     <>
       <NavHeader
@@ -15,21 +25,65 @@ const AdopsiDetail = () => {
         page3="Detail Kucing"
       />
 
-      <div className="container mx-auto px-4 grid grid-cols-4 space-x-2 space-y-2 mt-5 mb-40">
-        <div className="col-span-3 bg-green-50">
-          <img src={channie2} alt="" className="w-50% object-obtain h-50%" />
+      <div className="container mx-auto px-4 grid grid-cols-4 space-x-2 space-y-5 mt-5 mb-40">
+        <div className="col-span-3">
+          <div
+            className="w-[840px] h-[523px] bg-center bg-contain shadow-xl"
+            style={{
+              backgroundImage: `url(${cat.image})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "70%",
+              backgroundPosition: "top",
+              backgroundOrigin: "content-box",
+            }}
+          ></div>
         </div>
-        <div>detail kucing</div>
-        <div className="col-span-3 max-w-20 flex space-x-4">
-          <img src={channie} alt="" />
-          <img src={channie2} alt="" />
-          <img src={channie3} alt="" />
-          <img src={channie4} alt="" />
-          <img src={channie5} alt="" />
+        <DetailKucing details={details} />
+        <div className="col-span-3 flex flex-wrap justify-start space-x-4 mt-4 ">
+          {cat.img.map((imgItem, index) => (
+            <img
+              key={index}
+              className=" w-[195px] h-[180px] object-cover object-top mb-2"
+              src={imgItem.image}
+              alt={`${cat.title} ${index + 1}`}
+            />
+          ))}
         </div>
-        <div>NAME:ss</div>
-        <div className="col-span-3">deskripsi</div>
-        <div>map</div>
+        <div className="col-span-1 mt-4">
+          <h1 className="text-secondary text-xl font-semibold font-Satoshi-Reguler">
+            Share This
+          </h1>
+          <div className="flex space-x-4 mt-4">
+            {shareItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-black text-lg"
+              >
+                <item.icon />
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="col-span-3 mt-4 w-[830px] h-[523px]">
+          <div className="bg-greyLight p-4">
+            <h1 className="text-xl font-semibold font-Satoshi-Reguler">
+              Deskripsi
+            </h1>
+            <p className="text-base font-light font-Satoshi-Light">
+              {cat.description}
+            </p>
+          </div>
+        </div>
+        <div className="col-span-1">
+          <h1 className="text-secondary text-xl font-semibold font-Satoshi-Regulerbold">
+            Map Lokasi
+          </h1>
+          {/* Placeholder for map or additional details */}
+          <div className="px-4 bg-greyLighter"></div>
+        </div>
       </div>
     </>
   );
