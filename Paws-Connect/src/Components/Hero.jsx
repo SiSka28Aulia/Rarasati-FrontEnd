@@ -2,11 +2,12 @@ import React from "react";
 import styles from "../style";
 import { catHome1, catHome2, ellipse } from "../assets";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
     <>
-      <section className="container mx-90">
+      <section className="container mx-90 mt-8">
         <div className="flex items-center justify-between mx-12 mt-10 mb-10">
           {/* Bagian Kiri */}
           <div className="flex flex-1 flex-col  justify-center mx-12">
@@ -19,7 +20,9 @@ const Hero = () => {
               Temukan Sahabat Sejati Anda Hari Ini di Website Adopsi Kucing Kami
             </p>
             <div className="mt-10">
-              <Button button="Adopsi" />
+              <Link to="/login">
+                <Button variant="primary">Adopsi</Button>
+              </Link>
             </div>
           </div>
 
@@ -41,11 +44,10 @@ const Hero = () => {
               <img
                 src={catHome2}
                 alt="cathome2"
-                className="w-[950px] h-[390px] object-contain relative z-[5] bottom-96 left-14 transform scale-150"
+                className="w-[950px] h-[390px] object-contain relative z-[5] bottom-80 left-14 transform scale-15++++++0"
               />
             </div>
           </div>
-          {/* </div> */}
         </div>
       </section>
     </>
