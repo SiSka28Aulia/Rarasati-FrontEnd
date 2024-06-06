@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Tambahkan link untuk Font Awesome -->
+    <style>
+        .form-section {
+            background-color: #f9e4f1;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        .form-section .btn-primary {
+            background-color: #6D4D91;
+            border: none;
+        }
+        .form-section .btn-secondary {
+            background-color: #EDEDED;
+            border: none;
+            color: black;
+        }
+        .cat-image {
+            background-image: url('image/Picture1.png');
+            background-size: cover;
+            background-position: center;
+            height: auto; 
+            border-top-left-radius: 8%;
+            border-bottom-left-radius: 8px;
+            opacity: 0.6 ;
+            
+        }
+        .btn-toggle-male {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-toggle-female {
+            background-color: #ffffff;
+            color: black;
+        }
+        #preview-image {
+            width: 200px; /* Lebar tetap preview image */
+            height: 200px; /* Tinggi tetap preview image */
+            margin-top: 10px;
+        }
+
+        .container-fluid {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row no-gutters" >
+        <div class="col-md-5 cat-image"></div>
+        <div class="col-md-7 form-section">
+            <br>
+            <form class="py-2 px-4" style="padding-left: 10px; margin-top: 7px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="catName">Nama</label>
+                            <input type="text" class="form-control" id="catName" placeholder="Nama Kucing">
+                        </div><br>
+                        <div class="form-group">
+                            <label for="catColor">Warna Bulu</label>
+                            <input type="text" class="form-control" id="catColor" placeholder="Warna Bulu Kucing">
+                        </div><br>
+                        <div class="form-group">
+                            <label>Gender</label><br>
+                            <button id="btn-male" class="btn btn-toggle-male mr-2" onclick="toggleButton(event, 'male')">Male</button>
+                            <button id="btn-female" class="btn btn-toggle-female" onclick="toggleButton(event, 'female')">Female</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="catImage">Upload Foto Kucing</label><br>
+                            <label class="btn btn-outline-primary">
+                                <input type="file" class="form-control-file d-none" id="catImage" accept="image/*" onchange="previewImage(event)">
+                                <i class="fas fa-camera"></i> Upload Foto 
+                            </label>
+                        </div>
+                        <img id="preview-image" src="#" alt="Preview" style="display: none;">
+                        <br>
+                        <div class="form-group">
+                            <label for="catBirthday">Birthday</label>
+                            <input type="date" class="form-control" id="catBirthday">
+                        </div><br>
+                        <div class="form-group">
+                            <label for="contact">Kontak</label>
+                            <input type="text" class="form-control" id="contact" placeholder="Masukkan Nomor Kontak">
+                        </div>
+                    </div>
+                </div><br>
+                <div class="form-group">
+                    <label for="description">Deskripsi Kucing</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
+                </div>
+                
+                
+                <button type="button" class="btn btn-secondary">Kembali</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleButton(event, selected) {
+        event.preventDefault(); // Prevent form submission
+        const btnMale = document.getElementById('btn-male');
+        const btnFemale = document.getElementById('btn-female');
+
+        if (selected === 'male') {
+            btnMale.classList.add('btn-toggle-male');
+            btnMale.classList.remove('btn-toggle-female');
+            btnFemale.classList.add('btn-toggle-female');
+            btnFemale.classList.remove('btn-toggle-male');
+        } else {
+            btnMale.classList.add('btn-toggle-female');
+            btnMale.classList.remove('btn-toggle-male');
+            btnFemale.classList.add('btn-toggle-male');
+            btnFemale.classList.remove('btn-toggle-female');
+        }
+    }
+
+    function previewImage(event) {
+        const preview = document.getElementById('preview-image');
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function() {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
