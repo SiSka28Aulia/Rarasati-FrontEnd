@@ -32,7 +32,7 @@ const AdopsiModal = () => {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="my_modal_7" className="cursor-pointer">
-          Data Adopsi
+          Adopsi
         </label>
         <input type="checkbox" id="my_modal_7" className="modal-toggle" />
         <div className="modal" role="dialog">
@@ -42,7 +42,7 @@ const AdopsiModal = () => {
                 <img src={logobaru} alt="Logo" className="w-48" />
               </div>
               <h5 className="text-xl text-center font-bold text-black mt-6 mb-8 font-satoshi-bold">
-                Masuk sebagai Admin
+                Masuk Untuk Melanjutkan
               </h5>
 
               <div className="mt-4">
@@ -93,28 +93,13 @@ const AdopsiModal = () => {
                 </label>
               </div>
 
-              <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="w-4/5 mt-4 text-base bg-primary text-white py-2 rounded-lg hover:bg-purple font-bold font-satoshi-regular"
+              <p className="text-sm text-secondary font-bold mt-4 font-satoshi-regular">
+                Belum punya akun?
+                <Link
+                  to="/register"
+                  className="text-primary underline ml-2 font-satoshi-light font-light"
                 >
-                  Masuk
-                </button>
-              </div>
-              {error && (
-                <div className="text-red-500 text-xs font-light mt-1">
-                  {error}
-                </div>
-              )}
-            </div>
-          </div>
-          <label className="modal-backdrop" htmlFor="my_modal_7">
-            Close
-          </label>
-        </div>
-      </form>
-    </>
-  );
-};
+                  Daftar
+                </Link>
+              </p>
 
-export default AdopsiModal;
