@@ -103,3 +103,28 @@ const AdopsiModal = () => {
                 </Link>
               </p>
 
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="w-4/5 mt-4 text-base bg-primary text-white py-2 rounded-lg hover:bg-purple font-bold font-satoshi-regular"
+                >
+                  Masuk
+                </button>
+              </div>
+              {error && (
+                <div className="text-red-500 text-xs font-light mt-1">
+                  {error}
+                </div>
+              )}
+            </div>
+          </div>
+          <label className="modal-backdrop" htmlFor="my_modal_7">
+            Close
+          </label>
+        </div>
+      </form>
+    </>
+  );
+};
+
+export default AdopsiModal;
