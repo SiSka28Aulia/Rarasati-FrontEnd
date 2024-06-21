@@ -1,72 +1,106 @@
-import React from "react";
-import UseForm from "../hooks/UseForm";
-import { login } from "../assets/index.js";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { logobaru } from "../assets/index.js";
+
 const Login = () => {
-  const { handleChange, handleSubmit, values } = UseForm(() => {
-    console.log("Form submitted");
-  });
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleLogin = async (data) => {
+    const { email, password } = data;
+    try {
+      const response = await axios.post("http://localhost:8000/auth-login", {
+        email,
+        password,
+      });
+      localStorage.setItem("token", response.data.token);
+      navigate("/");
+    } catch (err) {
+      setError("Email atau password tidak valid");
+    }
+  };
 
   return (
-    <>
-    <div className="min-h-screen flex items-center justify-center ">
-      <div className="w-480px h-613px flex shadow-lg rounded-lg bg-white overflow-hidden">
-        <div className="w-1/2 bg-cover bg-center bg-pink" style={{ backgroundImage: `url(${login})` }}>
-          <div className="p-10">
-            <h1 className="text-3xl font-bold text-white text-center">Selamat Datang</h1>
-
-            <div className="flex mt-4">
-              <a href="#" className="text-white text-2xl mr-2"><i className="fa fa-facebook"></i></a>
-              <a href="#" className="text-white text-2xl"><i className="fa fa-twitter"></i></a>
-            </div>
+    <form onSubmit={handleSubmit(handleLogin)}>
+      <div className="min-h-screen flex items-center justify-center bg-primary">
+        <div className="w-96 p-8 bg-white shadow-lg rounded-3xl">
+          <div className="flex items-center justify-center mb-2">
+            <img src={logobaru} alt="Logo" className="w-48" />
           </div>
-        </div>
-        <div className="w-1/2 p-8">
-          <h5 className="text-xl text-center font-bold text-black mt-20 mb-8">Masuk untuk melanjutkan</h5>
+          <h5 className="text-xl text-center font-semibold text-black mt-6 mb-8">
+            Masuk Untuk Melanjutkan
+          </h5>
 
-          <form onSubmit={handleSubmit}>
-            <div className="mt-4">
+          <div className="mt-4">
+            <label htmlFor="email">
               <input
-                name="username"
-                value={values.username || ""}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:border-primary"
                 type="text"
-                placeholder="Username"
+                id="email"
+                placeholder="Email"
+                className="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:border-primary text-black font-satoshi-regular"
+                {...register("email", { required: "Email is required" })}
               />
-            </div>
-            <div className="mt-4">
+              {errors.email && (
+                <span className="text-red-500 text-xs font-light mt-1">
+                  {errors.email.message}
+                </span>
+              )}
+            </label>
+          </div>
+          <div className="mt-4 relative">
+            <label htmlFor="password">
               <input
-                name="password"
-                value={values.password || ""}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:border-primary"
-                type="password"
+                type={showPassword ? "text" : "password"}
+                id="password"
                 placeholder="Password"
+                className="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:border-primary text-black font-satoshi-regular"
+                {...register("password", { required: "Password is required" })}
               />
-            </div>
-            <div className="mt-4 flex items-center justify-between">
-              <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="ml-2 text-sm text-gray-600">Ingat saya</span>
-              </label>
-              <a href="#" className="text-sm text-greyLight">Lupa kata sandi?</a>
-            </div>
-            <p className="text-sm text-secondary font-bold mt-1">Belum punya akun?
-              <Link to="/register">
-              <a href="#" className="font-light text-primary underline ">
+              {errors.password && (
+                <span className="text-red-500 text-xs font-light mt-1">
+                  {errors.password.message}
+                </span>
+              )}
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-0 px-3 flex items-center text-sm text-gray-600"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </label>
+          </div>
 
-              Mulai mendaftar</a>
-              </Link>
-              </p>
-            <button className="w-full mt-4 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-purple">
-              Masuk
-            </button>
-          </form>
+          <p className="text-sm text-secondary font-bold mt-1 font-satoshi-regular">
+            Belum punya akun?
+            <Link
+              to="/register"
+              className="font-light text-primary underline ml-2"
+            >
+              Daftar
+            </Link>
+          </p>
+          <button
+            type="submit"
+            className="w-full mt-4 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-purple"
+          >
+            Masuk
+          </button>
+          {error && (
+            <div className="text-red-500 text-xs font-light mt-1">{error}</div>
+          )}
         </div>
       </div>
-    </div>
-    </>
+    </form>
   );
 };
 
