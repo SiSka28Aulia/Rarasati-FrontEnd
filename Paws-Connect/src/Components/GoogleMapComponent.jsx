@@ -10,7 +10,6 @@ import {
 const containerStyle = {
   width: "300px",
   height: "200px",
-
 };
 
 const center = {
@@ -21,25 +20,25 @@ const center = {
 const GoogleMapComponent = () => {
   return (
     <>
-    <APIProvider apiKey={"AIzaSyBVNGJeW_PlLA8Zm4u0GgcjbSeDEokOhVY"}>
-      <Map
-        style={containerStyle}
-        center={center}
-        defaultZoom={14}
-        gestureHandling={"greedy"}
-        disableDefaultUI={true}
-      >
-        <MapControl position={ControlPosition.TOP_RIGHT}>
-          <Marker position={{ center }}>
-            <Pin
-              background={"#FBBC04"}
-              glyphColor={"#000"}
-              borderColor={"#000"}
-            />
-          </Marker>
-        </MapControl>
-      </Map>
-    </APIProvider>
+      <APIProvider apiKey={"AIzaSyBVNGJeW_PlLA8Zm4u0GgcjbSeDEokOhVY"}>
+        <Map
+          style={containerStyle}
+          center={center}
+          defaultZoom={14}
+          gestureHandling={"greedy"}
+          disableDefaultUI={true}
+        >
+          <MapControl position={ControlPosition.TOP_RIGHT}>
+            <Marker position={{ center }}>
+              <Pin
+                background={"#FBBC04"}
+                glyphColor={"#000"}
+                borderColor={"#000"}
+              />
+            </Marker>
+          </MapControl>
+        </Map>
+      </APIProvider>
     </>
   );
 };
