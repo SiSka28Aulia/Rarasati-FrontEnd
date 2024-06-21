@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { logobaru } from "../assets/index.js";
+import { AuthContext } from "../Auth/AuthContext";
 
 const Login = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const {
     register,
@@ -22,7 +24,7 @@ const Login = () => {
         email,
         password,
       });
-      localStorage.setItem("token", response.data.token);
+      login(response.data.token);
       navigate("/");
     } catch (err) {
       setError("Email atau password tidak valid");

@@ -1,10 +1,15 @@
-import React from "react";
-import { logobaru } from "../assets";
-import styles from "../style";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { logobaru } from "../assets";
 import UserMenu from "./UserMenu";
+import { AuthContext } from "../Auth/AuthContext";
 
 const Navbar = () => {
+  const { isLoggedIn } = useContext(AuthContext);
+
+  if (!isLoggedIn) {
+    return null;
+  }
   return (
     <>
       <div className="md:flex space-x-6 hidden items-center justify-center flex-col md:flex-row mt-2">
@@ -14,7 +19,7 @@ const Navbar = () => {
               <img src={logobaru} alt="logo" className="w-20 mb-6" />
             </Link>
           </div>
-          <div className="flex space-x-6 ml-20">
+          <div className="flex space-x-6 ml-32">
             <Link to="/">
               <div className="text-sky-950 text-base font-light font-Satoshi-Light leading-[40px]">
                 Beranda

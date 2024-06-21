@@ -1,12 +1,11 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { AuthContext } from "../Auth/AuthContext";
 
 const PublicRoutes = () => {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
+  const { isLoggedIn } = useContext(AuthContext);
+
+  return !isLoggedIn ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default PublicRoutes;

@@ -1,14 +1,11 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Navbar from './Navbar';
+import React, { useContext } from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { AuthContext } from "../Auth/AuthContext";
 
 const PrivateRoutes = () => {
-  return (
-    <>
-      <Navbar />
-      <Outlet />
-    </>
-  );
+  const { isLoggedIn } = useContext(AuthContext);
+
+  return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoutes;

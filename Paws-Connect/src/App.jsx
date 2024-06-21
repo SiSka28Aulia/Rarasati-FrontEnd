@@ -10,22 +10,22 @@ import Komunitas from "./Pages/Komunitas";
 import Comment from "./Components/Comment";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
-// import Logout from './Auth/Logout';
 import UserProfil from "./Pages/UserProfil";
 import PrivateRoutes from "./Components/PrivateRoutes";
 import PublicRoutes from "./Components/PublicRoutes";
 import { AuthProvider } from "./Auth/AuthContext";
+import Navbar from "./Components/Navbar";
 
 const App = () => {
   return (
     <AuthProvider>
       <Router>
+        <Navbar />
         <Routes>
           <Route element={<PublicRoutes />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<UserProfil />} />
-            {/*<Route path="/logout" element={<Logout />} />*/}
           </Route>
           <Route element={<PrivateRoutes />}>
             <Route path="/" element={<Beranda />} />
