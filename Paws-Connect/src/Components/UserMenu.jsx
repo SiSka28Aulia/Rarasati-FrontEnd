@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "./Avatar";
+import axios from "axios";
 
-const UserMenu = ({ logoutButtonText = "Keluar" }) => {
+const UserMenu = ({ logoutButtonText }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [avatarSrc, setAvatarSrc] = useState("https://via.placeholder.com/150"); // Default avatar URL
+  const [avatarSrc, setAvatarSrc] = useState("https://via.placeholder.com/150");
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fungsi untuk memeriksa status login pengguna
     const checkLoginStatus = () => {
-      const user = JSON.parse(localStorage.getItem("user"));
+      const user = localStorage.getItem("token");
       if (user) {
         setIsLoggedIn(true);
-        setAvatarSrc(user.avatar || "https://via.placeholder.com/150"); // Gunakan avatar pengguna atau default
+        setAvatarSrc(user.avatar || "https://via.placeholder.com/150");
       } else {
         setIsLoggedIn(false);
-        setAvatarSrc("https://via.placeholder.com/150"); // Default avatar ketika logout
+        setAvatarSrc("https://via.placeholder.com/150");
       }
     };
 
@@ -25,18 +25,18 @@ const UserMenu = ({ logoutButtonText = "Keluar" }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("/api/logout", {
+      const response = await fetch("http://localhost:8000/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      if (response.ok) {
-        localStorage.removeItem("user"); // Hapus data pengguna dari localStorage
-        setIsLoggedIn(false); // Perbarui state untuk mencerminkan status logout
-        setAvatarSrc("https://via.placeholder.com/150"); // Setel ulang avatar ke default
-        navigate("/login"); // Arahkan ke halaman login
+      if (response.status == 200) {
+        localStorage.removeItem("token");
+        setIsLoggedIn(false);
+        setAvatarSrc("https://via.placeholder.com/150");
+        navigate("/");
       } else {
         console.error("Logout gagal");
       }
@@ -62,6 +62,7 @@ const UserMenu = ({ logoutButtonText = "Keluar" }) => {
               </li>
             </Link>
             <hr />
+
             <li>
               <a onClick={handleLogout}>Keluar</a>
             </li>
