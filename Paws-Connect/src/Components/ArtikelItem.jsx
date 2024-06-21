@@ -7,7 +7,7 @@ const ArtikelItem = () => {
     <div
       className={`grid grid-cols-1 md:grid-cols-3 gap-10 ${styles.padding} ${styles.flexCenter}`}
     >
-      {artikelItems.map((item) => (
+      {artikelItems.slice(0, 3).map((item) => (
         <div
           key={item.id}
           className="flex flex-col items-center p-5  rounded-lg shadow-md bg-white"
