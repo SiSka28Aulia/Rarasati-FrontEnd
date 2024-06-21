@@ -1,67 +1,98 @@
-import { useState } from "react";
-import { send } from "../assets";
+// Komunitas.jsx
+
+import React, { useState, useEffect } from "react";
+import { FaPaperclip } from "react-icons/fa";
 import NavHeader from "../Components/NavHeader";
-import Comment from "../Components/Comment";
 import Footer from "../Components/Footer";
+import axios from "axios";
+import Post from "../Components/Post";
 
 const Komunitas = () => {
-  const [comments, setComments] = useState([
-    {
-      author: "Rina",
-      content: "Halo, Apakah Anda memiliki pengalaman dalam mengadopsi kucing?",
-      timestamp: "2 hours ago",
-    },
-    {
-      author: "Reni",
-      content:
-        "Saya punya pengalaman mengadopsi kucing yang menyenangkan. Memberi rumah bagi kucing yang butuh sungguh memuaskan dan membuat saya bahagia.",
-      timestamp: "1 hour ago",
-    },
-    {
-      author: "Roni",
-      content:
-        "Apa yang membuat Anda memilih adopsi sebagai opsi untuk mendapatkan kucing?",
-      timestamp: "30 minutes ago",
-    },
-    {
-      author: "Rini",
-      content:
-        "Saya ingin mencoba adopsi kucing. Apa yang membuat Anda memilih adopsi sebagai opsi untuk mendapatkan kucing?",
-      timestamp: "10 minutes ago",
-    },
-    {
-      author: "Rini",
-      content: "Apakah kamu suka kucing ini?",
+  const [posts, setPosts] = useState([]);
+  const [newPost, setNewPost] = useState({ text: "", image: null });
+  const [selectedPost, setSelectedPost] = useState(null);
 
-      timestamp: "10 minutes ago",
-    },
-  ]);
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
-  const [newComment, setNewComment] = useState("");
-  const [newImage, setNewImage] = useState(null);
-
-  const handleCommentChange = (e) => {
-    setNewComment(e.target.value);
-  };
-
-  const handleImageChange = (e) => {
-    if (e.target.files[0]) {
-      setNewImage(URL.createObjectURL(e.target.files[0]));
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/show-post");
+      const sortedPosts = response.data.data.sort((a, b) => {
+        return new Date(a.created_at) - new Date(b.created_at); // Sorting by ascending order of creation time
+      });
+      setPosts(sortedPosts);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
     }
   };
 
-  const handleAddComment = () => {
-    if (newComment.trim() !== "") {
-      const newCommentObj = {
-        author: "Current User",
-        content: newComment,
-        timestamp: "Just now",
-        image: newImage,
-      };
-      setComments([newCommentObj, ...comments]);
-      setNewComment("");
-      setNewImage(null);
+  const handleCreatePost = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("user_id", 1); // Replace with appropriate user ID
+    formData.append("text", newPost.text);
+    if (newPost.image) {
+      formData.append("image", newPost.image);
     }
+
+    try {
+      await axios.post("http://localhost:8000/add-post", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      setNewPost({ text: "", image: null });
+      fetchPosts(); // Refresh posts after creating new one
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
+  };
+
+  const handleDeletePost = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8000/delete/${id}`);
+      fetchPosts(); // Refresh posts after deleting
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
+
+  const handleSelectPost = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/byid/${id}-post`);
+      setSelectedPost(response.data.data);
+    } catch (error) {
+      console.error("Error fetching post details:", error);
+    }
+  };
+
+  // Function to format time ago
+  const formatTimeAgo = (timestamp) => {
+    const current = new Date();
+    const previous = new Date(timestamp);
+    const seconds = Math.floor((current - previous) / 1000);
+
+    let interval = Math.floor(seconds / 31536000);
+    if (interval >= 1) {
+      return `${interval} tahun yang lalu`;
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval >= 1) {
+      return `${interval} bulan yang lalu`;
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval >= 1) {
+      return `${interval} hari yang lalu`;
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval >= 1) {
+      return `${interval} jam yang lalu`;
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) {
+      return `${interval} menit yang lalu`;
+    }
+    return `${Math.floor(seconds)} detik yang lalu`;
   };
 
   return (
@@ -72,54 +103,81 @@ const Komunitas = () => {
         pagenav1=">"
         page2="Detail Kucing"
       />
-      <div className="max-w-4xl mx-auto py-10">
-        <div className="space-y-4 ">
-          {comments.map((comment, index) => (
-            <Comment
-              key={index}
-              author={comment.author}
-              content={comment.content}
-              timestamp={comment.timestamp}
+      <div className="max-w-4xl mx-auto py-10 px-4">
+        {/* List of posts */}
+        <div className="max-w-4xl space-y-4 mb-6 -ml-96">
+          {posts.map((post) => (
+            <Post
+              key={post.id_post}
+              post={post}
+              onSelectPost={handleSelectPost}
+              onDeletePost={handleDeletePost}
+              formatTimeAgo={formatTimeAgo}
             />
           ))}
         </div>
-      </div>
 
-      {/* Comment Input Section */}
-      <div className="flex items-center justify-center p-6 rounded-lg space-x-4  mb-6">
-        <textarea
-          className="flex h-24 w-3/6 p-4  border bg-greyLighter rounded-lg focus:outline-none focus:border-cyan"
-          placeholder="Tuliskan komentar..."
-          // value={newComment}
-          // onChange={handleCommentChange}
-        ></textarea>
-        <div className="">
-          {/* <label
-            htmlFor="upload-photo"
-            className="flex items-center cursor-pointer"
-          > */}
-          <div className="">
-            {/* <input
-              id="upload-photo"
-              type="file"
-              className="hidden" */}
-            {/* // accept="image/*" // onChange={handleImageChange} */}
-            {/* {newImage && (
-              <img
-                src={newImage}
-                alt="Preview"
-                className="w-10 h-10 object-cover rounded-full"
-              />
-            )} */}
-            {/* </label> */}
-            <button
-              // onClick={handleAddComment}
-              className="flex items-center justify-center px-4 w-24 h-24 bg-violet rounded-lg shadow  text-white font-bold font-Inter"
-            >
-              <img src={send} alt="post" />
-            </button>
-          </div>
+        {/* Form to create new post */}
+        <div className="flex justify-center">
+          <form
+            onSubmit={handleCreatePost}
+            className="card-body flex items-center justify-center p-6 rounded-lg space-x-4"
+          >
+            <textarea
+              value={newPost.text}
+              onChange={(e) => setNewPost({ ...newPost, text: e.target.value })}
+              className="card-body flex h-48 w-full p-4 border bg-greyLighter rounded-lg focus:outline-none focus:border-cyan"
+              placeholder="Apa yang Anda pikirkan?"
+            />
+
+            <div className="flex absolute items-right justify-right">
+              <label htmlFor="file-upload" className="cursor-pointer">
+                <FaPaperclip
+                  className="text-gray-600 hover:text-gray-800"
+                  size={20}
+                />
+
+                <input
+                  id="file-upload"
+                  type="file"
+                  onChange={(e) =>
+                    setNewPost({ ...newPost, image: e.target.files[0] })
+                  }
+                  className="hidden"
+                />
+              </label>
+              <button
+                type="submit"
+                className="btn btn-primary bg-violet text-white px-4 py-2 rounded"
+              >
+                Posting
+              </button>
+            </div>
+          </form>
         </div>
+
+        {/* Modal to display post details */}
+        {selectedPost && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white p-4 rounded max-w-lg w-full">
+              <h2 className="text-xl font-bold mb-2">Detail Postingan</h2>
+              <p>{selectedPost.text}</p>
+              {selectedPost.image && (
+                <img
+                  src={selectedPost.image}
+                  alt="Post"
+                  className="mt-2 max-w-full h-auto"
+                />
+              )}
+              <button
+                onClick={() => setSelectedPost(null)}
+                className="mt-4 bg-gray-500 text-white px-4 py-2 rounded"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        )}
       </div>
       <Footer />
     </>
