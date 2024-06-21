@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import NavHeader from "../Components/NavHeader";
 import { puppiesItems, shareItems, catDetailItems } from "../constants";
 import DetailKucing from "../Components/DetailKucing";
+import Footer from "../Components/Footer";
 
 const AdopsiDetail = () => {
   const { id } = useParams();
@@ -85,6 +86,7 @@ const AdopsiDetail = () => {
           <div className="px-4 bg-greyLighter"></div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
