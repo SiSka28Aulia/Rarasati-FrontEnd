@@ -1,8 +1,9 @@
 import React from "react";
 import ArtikelItem from "../Components/ArtikelItem";
-import Button from "../Components/Button";
 import NavHeader from "../Components/NavHeader";
 import { artikelItems } from "../constants";
+import styles from "../style";
+import Footer from "../Components/Footer.jsx";
 
 const Artikel = () => {
   return (
@@ -10,7 +11,7 @@ const Artikel = () => {
       <NavHeader nav="Artikel" page="Beranda" pagenav1=">" page2="Artikel" />
       <section className="">
         <div className="container mx-20">
-          {artikelItems.slice(0, 1).map((item) => (
+          {artikelItems.slice(3, 4).map((item) => (
             <div
               key={item.id}
               className="flex  items-center p-5  space-x-20 mt-8 ml-6 "
@@ -21,18 +22,11 @@ const Artikel = () => {
                 alt={item.title}
               />
               <div className="flex-1 w-64 h-72">
-                <h3 className="text-sm t font-light">{item.read}</h3>
+                <h3 className="text-sm t font-light">{item.date}</h3>
                 <h3 className="text-lg  font-bold mt-2">{item.title}</h3>
-                <p className="text-sm font-light mt-2 mr-10">{item.content}</p>
-                <div className="flex items-center mt-4">
-                  <img
-                    className="w-6 h-6 mr-2"
-                    src={item.sourcelogo}
-                    alt={item.source}
-                  />
-                  <span className="text-sm text-gray-600 font-bold">
-                    {item.source}
-                  </span>
+                <p className="text-sm font-light mt-2 mr-16">{item.content}</p>
+                <div className="flex text-sm font-light font-satoshi-light text-primary items-center mt-4 cursor-pointer">
+                  {item.more}
                 </div>
               </div>
             </div>
@@ -42,13 +36,26 @@ const Artikel = () => {
           <h1 className="text-cyan text-3xl font-bold font-Satoshi-Regular ">
             Artikel Paling Populer
           </h1>
-          <div className="flex space-x-5">
-            <Button button="Cari Artikel" />
-            <Button button="Search" />
+          <div className="flex ">
+            <div className="flex p-4 space-x-5 ">
+              <div
+                className={` ${styles.flexCenter}  p-2 w-80 h-10 border-2  rounded-lg border-greyLight text-xl font-light font-Satoshi-Light  `}
+              >
+                <input
+                  type="text"
+                  placeholder="Cari Artikel"
+                  className="border-0 bg-transparent outline-0 rounded-md placeholder:text-greyLight text-center w-60 h-5 text-secondary text-base font-light font-Satoshi-Light leading-[40px]"
+                />
+              </div>
+              <button className="bg-primary rounded-lg p2 w-60 h-10 text-white font-light font-Satoshi-light text-xl leading-[40px]">
+                Search
+              </button>
+            </div>
           </div>
         </div>
         <ArtikelItem />
       </section>
+      <Footer />
     </>
   );
 };
