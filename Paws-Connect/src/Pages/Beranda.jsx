@@ -9,7 +9,7 @@ const Beranda = () => {
       <Hero />
       <Puppies />
       <Artikel />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
