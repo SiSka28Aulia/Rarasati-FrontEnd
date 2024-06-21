@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "./Avatar";
-import axios from "axios";
 
 const UserMenu = ({ logoutButtonText }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -36,7 +35,7 @@ const UserMenu = ({ logoutButtonText }) => {
         localStorage.removeItem("token");
         setIsLoggedIn(false);
         setAvatarSrc("https://via.placeholder.com/150");
-        navigate("/");
+        navigate("/login");
       } else {
         console.error("Logout gagal");
       }
