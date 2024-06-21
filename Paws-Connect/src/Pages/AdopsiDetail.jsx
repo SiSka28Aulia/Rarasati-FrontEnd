@@ -4,6 +4,7 @@ import NavHeader from "../Components/NavHeader";
 import { puppiesItems, shareItems, catDetailItems } from "../constants";
 import DetailKucing from "../Components/DetailKucing";
 import Footer from "../Components/Footer";
+import MapComponent from "../Components/MapComponent";
 
 const AdopsiDetail = () => {
   const { id } = useParams();
@@ -84,6 +85,7 @@ const AdopsiDetail = () => {
           </h1>
           {/* Placeholder for map or additional details */}
           <div className="px-4 bg-greyLighter"></div>
+          <MapComponent />
         </div>
       </div>
       <Footer />
