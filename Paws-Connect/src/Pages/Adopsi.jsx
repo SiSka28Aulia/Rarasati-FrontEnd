@@ -1,24 +1,28 @@
 import React from "react";
-import styles from "../style";
 import { Link } from "react-router-dom";
-import NavHeader from "../Components/NavHeader";
 import { puppiesItems } from "../constants";
+import styles from "../style";
+import Footer from "../Components/Footer.jsx";
+import NavHeader from "../Components/NavHeader.jsx";
 
 const Adopsi = () => {
   return (
     <>
+      {" "}
       <NavHeader
-        nav="Adopsi"
+        nav="Detail Kucing"
         page="Beranda"
         pagenav1=">"
         page2="Adopsi"
-        pagenav2=">"
-        page3="Adopsi"
       />
       <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
         <div className="grid grid-cols-3 gap-8 p-4">
           {puppiesItems.map((item) => (
-            <div key={item.title} className="relative w-fit overflow-hidden ">
+            <Link
+              to={`/adopsi/${item.id}`}
+              key={item.id}
+              className="relative w-fit overflow-hidden"
+            >
               <img
                 src={item.image}
                 alt={item.title}
@@ -32,10 +36,11 @@ const Adopsi = () => {
                   {item.desc}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
+      <Footer />
     </>
   );
 };
