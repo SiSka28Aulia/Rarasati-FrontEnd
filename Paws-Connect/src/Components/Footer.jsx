@@ -1,6 +1,6 @@
 import React from "react";
 
-import { logo1, logo2 } from "../assets";
+import { logorm } from "../assets";
 import { footerLinks } from "../constants";
 
 const Footer = () => {
@@ -9,11 +9,7 @@ const Footer = () => {
       <div className="max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-5 gap-2 px-8 py-8">
         <div className="col-span-2 pt-8 md:pt-2 ml-6 relative bottom-6">
           <div className="flex items-center mr-6 ">
-            <img src={logo2} alt="logo" className="w-12 h-11 relative top-5" />
-            <img src={logo1} alt="logo" className="w-14 h-13 relative top-4 right-4" />
-          </div>
-          <div className="text-primary text-2xl font-bold italic font-Inter leading-[40px] ml-10 mb-4">
-            Paw Connect
+            <img src={logorm} alt="logo" className="w-32 h-28 relative top-5" />
           </div>
         </div>
         {footerLinks.slice(0, 3).map((link) => (

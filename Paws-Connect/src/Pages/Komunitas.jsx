@@ -2,6 +2,7 @@ import { useState } from "react";
 import { send } from "../assets";
 import NavHeader from "../Components/NavHeader";
 import Comment from "../Components/Comment";
+import Footer from "../Components/Footer";
 
 const Komunitas = () => {
   const [comments, setComments] = useState([
@@ -120,6 +121,7 @@ const Komunitas = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
