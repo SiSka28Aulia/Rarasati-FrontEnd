@@ -370,7 +370,7 @@ export const artikelItems = [
       "Diantara cara mengatasi kejenuhan bekerja sendiri baik WFH maupun WFA diantaranya adalah dengan memelihara hewan. Menurut dr. Fadhli Rizal Makarim",
     source: "Kementrian Keuangan",
     sourcelogo: logoar1,
-    date: null,
+    date: "15 April 2022",
     more: "Baca Selengkapnya >",
   },
   {
@@ -382,7 +382,7 @@ export const artikelItems = [
       "Diantara cara mengatasi kejenuhan bekerja sendiri baik WFH maupun WFA diantaranya adalah dengan memelihara hewan. Menurut dr. Fadhli Rizal Makarim",
     source: "Kumparan",
     sourcelogo: logoar2,
-    date: null,
+    date: "7 Agustus 2023",
     more: "Baca Selengkapnya >",
   },
   {
@@ -394,7 +394,7 @@ export const artikelItems = [
       "Kucing umumnya menyukai dua jenis makanan tersebut, namun kadang ada kucing yang tidak suka dry food dan lebih menyukai wet food.",
     source: "Klik Dokter",
     sourcelogo: logoar3,
-    date: null,
+    date: "30 Desember 2021",
     more: "Baca Selengkapnya >",
   },
   {

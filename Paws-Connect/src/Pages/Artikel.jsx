@@ -9,30 +9,29 @@ const Artikel = () => {
   return (
     <>
       <NavHeader nav="Artikel" page="Beranda" pagenav1=">" page2="Artikel" />
-      <section className="">
-        <div className="container mx-20">
-          {artikelItems.slice(3, 4).map((item) => (
-            <div
-              key={item.id}
-              className="flex  items-center p-5  space-x-20 mt-8 ml-6 "
-            >
-              <img
-                className="w-96 h-72  scale-125 object-cover mb-4"
-                src={item.image}
-                alt={item.title}
-              />
-              <div className="flex-1 w-64 h-72">
-                <h3 className="text-sm t font-light">{item.date}</h3>
-                <h3 className="text-lg  font-bold mt-2">{item.title}</h3>
-                <p className="text-sm font-light mt-2 mr-16">{item.content}</p>
-                <div className="flex text-sm font-light font-satoshi-light text-primary items-center mt-4 cursor-pointer">
-                  {item.more}
-                </div>
+      <div className="container mx-20">
+        {artikelItems.slice(1, 4).map((item) => (
+          <div
+            key={item.id}
+            className="flex  items-center p-5  space-x-20 space-y-16 mt-8 ml-6 "
+          >
+            <img
+              className="w-96 h-72  scale-125 object-cover mb-4"
+              src={item.image}
+              alt={item.title}
+            />
+            <div className="flex-1 w-56 h-72 space-y-4">
+              <h3 className="text-sm font-light">{item.date}</h3>
+              <h3 className="text-lg  font-bold mt-2">{item.title}</h3>
+              <p className="text-sm font-light mt-2 mr-48 ">{item.content}</p>
+              <div className="flex text-sm font-light font-satoshi-light text-primary items-center mt-4 cursor-pointer">
+                {item.more}
               </div>
             </div>
-          ))}
-        </div>
-        <div className="flex items-center justify-between mx-20 mt-10 mb-10">
+          </div>
+        ))}
+      </div>
+      {/* <div className="flex items-center justify-between mx-20 mt-10 mb-10">
           <h1 className="text-cyan text-3xl font-bold font-Satoshi-Regular ">
             Artikel Paling Populer
           </h1>
@@ -53,8 +52,7 @@ const Artikel = () => {
             </div>
           </div>
         </div>
-        <ArtikelItem />
-      </section>
+        <ArtikelItem /> */}
       <Footer />
     </>
   );
