@@ -20,7 +20,7 @@ const Hero = () => {
               Temukan Sahabat Sejati Anda Hari Ini di Website Adopsi Kucing Kami
             </p>
             <div className="mt-10">
-              <Link to="/login">
+              <Link to="/adopsi">
                 <Button variant="primary">Adopsi</Button>
               </Link>
             </div>
