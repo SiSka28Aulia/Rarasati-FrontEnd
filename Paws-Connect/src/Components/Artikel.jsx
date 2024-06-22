@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ArtikelItem from "./ArtikelItem";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const Artikel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,9 +21,11 @@ const Artikel = () => {
           <h1 className="text-cyan text-3xl font-bold font-Satoshi-Regular">
             Artikel Terbaru Kami
           </h1>
-          <Button variant="primary" onClick={handleOpenModal}>
-            Selengkapnya
-          </Button>
+          <Link to="/artikel">
+            <Button variant="primary" onClick={handleOpenModal}>
+              Selengkapnya
+            </Button>
+          </Link>
         </div>
         <ArtikelItem />
       </section>
