@@ -1,7 +1,12 @@
 // Komunitas.jsx
 
 import React, { useState, useEffect } from "react";
-import { FaPaperclip } from "react-icons/fa";
+import {
+  FaImage,
+  FaPaperclip,
+  FaPlusCircle,
+  FaRegPlusSquare,
+} from "react-icons/fa";
 import NavHeader from "../Components/NavHeader";
 import Footer from "../Components/Footer";
 import axios from "axios";
@@ -126,15 +131,15 @@ const Komunitas = () => {
             <textarea
               value={newPost.text}
               onChange={(e) => setNewPost({ ...newPost, text: e.target.value })}
-              className="card-body flex h-48 w-full p-4 border bg-greyLighter rounded-lg focus:outline-none focus:border-cyan"
+              className="card-body flex h-48 w-full p-4 border bg-greyLighter rounded-lg focus:outline-none focus:border-cyan text-xl"
               placeholder="Apa yang Anda pikirkan?"
             />
 
-            <div className="flex absolute items-right justify-right">
+            <div className="flex relative left-80 bottom-16 space-x-4">
               <label htmlFor="file-upload" className="cursor-pointer">
-                <FaPaperclip
-                  className="text-gray-600 hover:text-gray-800"
-                  size={20}
+                <FaPlusCircle
+                  className="text-gray-600 hover:text-gray-800 relative top-2"
+                  size={28}
                 />
 
                 <input
@@ -148,7 +153,7 @@ const Komunitas = () => {
               </label>
               <button
                 type="submit"
-                className="btn btn-primary bg-violet text-white px-4 py-2 rounded"
+                className="btn btn-primary bg-violet text-white px-4 py-2 rounded-3xl"
               >
                 Posting
               </button>
