@@ -371,7 +371,7 @@ export const artikelItems = [
     source: "Kementrian Keuangan",
     sourcelogo: logoar1,
     date: "15 April 2022",
-    more: "Baca Selengkapnya >",
+    url: "/",
   },
   {
     id: 2,
@@ -383,7 +383,7 @@ export const artikelItems = [
     source: "Kumparan",
     sourcelogo: logoar2,
     date: "7 Agustus 2023",
-    more: "Baca Selengkapnya >",
+    url: "/",
   },
   {
     id: 3,
@@ -395,7 +395,7 @@ export const artikelItems = [
     source: "Klik Dokter",
     sourcelogo: logoar3,
     date: "30 Desember 2021",
-    more: "Baca Selengkapnya >",
+    url: "/",
   },
   {
     id: 4,
@@ -407,7 +407,7 @@ export const artikelItems = [
     source: "Kementrian Keuangan",
     sourcelogo: logoar1,
     date: "11 Januari 2022",
-    more: "Baca Selengkapnya >",
+    url: "/",
   },
 ];
 
