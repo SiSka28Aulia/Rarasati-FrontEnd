@@ -7,7 +7,6 @@ const Post = ({ post, onSelectPost, onDeletePost, formatTimeAgo }) => {
   return (
     <div className="chat">
       <div className="chat-header">
-        {post.user_name} {/* Assuming this is where you display username */}
       </div>
       <div className="chat-bubble p-3 rounded-lg bg-primary/65 border border-greyLight shadow-md mb-4 font-normal font-Inter">
         <p>{post.text}</p>
@@ -15,7 +14,7 @@ const Post = ({ post, onSelectPost, onDeletePost, formatTimeAgo }) => {
           <img src={post.image} alt="Post" className="mt-2 max-w-full h-auto" />
         )}
         <time className="text-xs opacity-50 mt-4">
-          {formatTimeAgo(post.created_at)}
+            {post.nama_depan} - {formatTimeAgo(post.created_at)}
         </time>
       </div>
       <div className="chat-footer opacity-50 text-xs">
