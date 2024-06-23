@@ -24,7 +24,7 @@ const Login = () => {
         email,
         password,
       });
-      login(response.data.token);
+      login(response.data.token, response.data.id);
       navigate("/");
     } catch (err) {
       setError("Email atau password tidak valid");

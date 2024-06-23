@@ -36,7 +36,7 @@ const Komunitas = () => {
   const handleCreatePost = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("user_id", 1); // Replace with appropriate user ID
+    formData.append("user_id", localStorage.getItem("id")); // Replace with appropriate user ID
     formData.append("text", newPost.text);
     if (newPost.image) {
       formData.append("image", newPost.image);

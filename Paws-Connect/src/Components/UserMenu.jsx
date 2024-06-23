@@ -31,7 +31,7 @@ const UserMenu = ({ logoutButtonText }) => {
         },
       });
 
-      if (response.status == 200) {
+      if (response.status === 200) {
         localStorage.removeItem("token");
         setIsLoggedIn(false);
         setAvatarSrc("https://via.placeholder.com/150");
