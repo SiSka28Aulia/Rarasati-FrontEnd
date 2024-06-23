@@ -30,16 +30,16 @@ const Hero = () => {
           <div
             className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}
           >
-            <div className="absolute ">
+            <div className="absolute -z-10">
               <img
                 src={ellipse}
                 alt="ellipse"
-                className="w-4/5 relative top-96 left-28 "
+                className="w-4/5 relative top-96 left-28"
               />
               <img
                 src={catHome1}
                 alt="cathome1"
-                className="w-[900px] h-[550px] object-cover relative bottom-10 right-10 z-[5] "
+                className="w-[900px] h-[550px] object-cover relative bottom-10 right-10 z-[5]"
               />
               <img
                 src={catHome2}
